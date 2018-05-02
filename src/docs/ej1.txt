@@ -1,0 +1,52 @@
+<div>
+    <div style="position:absolute; width:400px; height:30px; margin-top:20px; margin-left:20px;">
+        <span style="font-size:14px; font-family:GBook;">{{name}}</span><br>
+        <span style="font-size:14px; font-family:GBook;">{{sku}} | Origen: {{origen}}</span>
+    </div>
+    <div style="position:absolute; width:150px; height:30px; margin-top:20px; margin-left:530px;">
+       <img src="http://10.88.1.61:4040/images/etiquetas/lavarropas/LOGO-{{marca}}.png" style="max-width:100%; max-height:100%;">
+    </div>
+    <div style="position:absolute; width:660px; height:30px; margin-top:60px; margin-left:20px;">
+       <img src="http://10.88.1.61:4040/images/etiquetas/heladeras/linea_blanca.jpg" style="max-width:100%; max-height:100%;">
+    </div>
+    <div style="position:absolute; width:450px; height:280px; margin-top:80px; margin-left:10px;">
+        {{#if capacidad}}
+        <div style="width:140px; height:40px; margin:10px;">
+             <img src="http://10.88.1.61:4040/images/etiquetas/lavarropas/capacidad.png" style="max-width:100%; max-height:100%; float:left;">
+             <span style="float:right; position:absolute; margin-top:10px; margin-left:15px; font-size:18px;font-family:GBook;">{{capacidad}} Kg</span>
+        </div>
+        {{/if}}
+        {{#if alto}}
+        <div style="width:140px; height:40px; margin:10px;">
+             <img src="http://10.88.1.61:4040/images/etiquetas/lavarropas/dimensiones.png" style="max-width:100%; max-height:100%; float:left;">
+             <span style="float:right; position:absolute; margin-top:10px; margin-left:15px; font-size:18px; font-family:GBook;">Alt: {{alto}}cm | Ancho: {{ancho}}cm | Prof: {{profundidad}}cm</span>
+        </div>
+        {{/if}}
+        {{#if rpm}}
+        <div style="width:140px; height:40px; margin:10px;">
+             <img src="http://10.88.1.61:4040/images/etiquetas/lavarropas/rpm.png" style="max-width:100%; max-height:100%; float:left;">
+             <span style="float:right; position:absolute; margin-top:10px; margin-left:15px; font-size:18px;font-family:GBook;">{{rpm}} RPM</span>
+        </div>
+        {{/if}}
+        {{#if programas}}
+        <div style="width:140px; height:40px; margin:10px;">
+             <img src="http://10.88.1.61:4040/images/etiquetas/lavarropas/programa.png" style="max-width:100%; max-height:100%; float:left;">
+             <span style="float:right; position:absolute; margin-top:10px; margin-left:15px; font-size:18px;font-family:GBook;">Programas: {{programas}}</span>
+        </div>
+        {{/if}}
+        {{#if wifi}}
+         <div style="width:140px; height:40px; margin:10px;">
+             <img src="http://10.88.1.61:4040/images/etiquetas/lavarropas/wifi.png" style="max-width:100%; max-height:100%; float:left;">
+             <span style="float:right; position:absolute; margin-top:10px; margin-left:15px; font-size:18px;font-family:GBook;">WIFI</span>
+        </div>
+        {{/if}}
+    </div>
+    <div style="position:absolute; width:250px; height:130px; margin-top:200px; margin-left:470px;">
+        <span style="font-family:GBook;">PRECIO CONTADO</span><br>
+        <span style="font-size:8px; font-family:GLight;line-height: 50%;">EFECTIVO TARJETA DE DEBITO O<br>TARJETA DE CREDITO EN 1 PAGO</span><br><br>
+        <span style="font-size:38px; font-family:GBlack;"><strong>${{price}}</strong></span>
+    </div>      
+    <div style="position:absolute; width:700px; height:280px; margin-top:390px;">
+        <img src="http://10.88.1.61:4040/images/etiquetas/lavarropas/pie_cartel_lavarropas.jpg" style="max-width:100%; max-height:100%;">
+    </div>
+</div>

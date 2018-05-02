@@ -1,0 +1,24 @@
+R9,Default cocinas,1,Preproduccion_029,23/4/2018,15/5/2018,,cocinas
+R8,Default cocinas,1,,23/4/2018,15/5/2018,100106,
+R7,Default cocinas,1,Preproduccion_029,23/4/2018,15/5/2018,100106,
+R6 (NO SE DEBE PODER CREAR ESTA REGLA),Oferta x2 ElectroSale Cocina,2,,23/4/2018,15/5/2018,,
+R5 (NO SE DEBE PODER CREAR ESTA REGLA),Oferta x2 ElectroSale Cocina,2,Preproduccion_029,23/4/2018,15/5/2018,,
+R4,Oferta x2 ElectroSale Cocina,2,,23/4/2018,15/5/2018,,cocina
+R3,Oferta x2 ElectroSale Cocina,2,Preproduccion_029,23/4/2018,15/5/2018,,cocina
+R24,T24ofertaMobile,4,Preproduccion_029,23/4/2018,15/5/2018,780992,
+R23,R23ofertaMobile,4,,23/4/2018,15/5/2018,780992,
+R22,R22ofertaMobile,4,Preproduccion_029,23/4/2018,15/5/2018,,celulares
+R21,R21ofertaMobile,4,,23/4/2018,15/5/2018,,celulares
+R20(NO SE DEBE PODER CREAR ESTA REGLA),T1,Oferta mobile,Preproduccion_029,23/4/2018,15/5/2018,,
+R2,Oferta x2 ElectroSale Cocina,Oferta,,23/4/2018,15/5/2018,100106,
+R19(NO SE DEBE PODER CREAR ESTA REGLA),T1,Oferta mobile,,23/4/2018,15/5/2018,,
+R18,R18ofertaMobile,3,Preproduccion_029,23/4/2018,15/5/2018,780992,
+R17,R17ofertaMobile,3,,23/4/2018,15/5/2018,780992,
+R16,R16ofertaMobile,3,Preproduccion_029,23/4/2018,15/5/2018,,celulares
+R15,R15ofertaMobile,3,,23/4/2018,15/5/2018,,celulares
+R14,R14ofertaMobile,3,Preproduccion_029,23/4/2018,15/5/2018,,
+R13,R13ofertaMobile,3,,23/4/2018,15/5/2018,,
+R12,Default cocinas,1,,23/4/2018,15/5/2018,,
+R11,Default cocinas,1,Preproduccion_029,23/4/2018,15/5/2018,,
+R10,Default cocinas,1,,23/4/2018,15/5/2018,,cocinas
+R1,Oferta x2 ElectroSale Cocina,2,Preproduccion_029,23/4/2018,15/5/2018,100106,
