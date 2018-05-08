@@ -10,14 +10,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BaseTest {
 	//Chrome
 	public static final String URL_TECHNETTS = "http://qa.etiquetas.ad-fravega.com:8080";
-	public static final String WEB_DRIVER_PATH ="C:\\Users\\31953658\\workspace\\FravegaProjectFer\\lib\\chromedriver.exe";
+	public static final String WEB_DRIVER_PATH ="C:\\Users\\31953658\\eclipse-workspace\\Etiquetas\\lib\\chromedriver.exe";
 	public static final String WEB_DRIVER_CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver"; 
 	public static WebDriver driver;
 	public static WebDriverWait driverWait;
 	
 	//Mozilla Firefox
 	
-	public static final String WEB_FF_DRIVER_PATH ="C:\\Users\\31953658\\workspace\\FravegaProjectFer\\lib\\geckodriver.exe";
+	public static final String WEB_FF_DRIVER_PATH ="C:\\Users\\31953658\\eclipse-workspace\\Etiquetas\\lib\\geckodriver.exe";
 	public static final String WEB_DRIVER_FF_DRIVER_PROPERTY = "webdriver.gecko.driver"; 
 	
 	public static void setup(){

@@ -17,6 +17,9 @@ import pages.Reglas;
 public class Controlador {
 	
 
+String nombreT = "TemplFer222";	
+	
+	
 	
 	// Aca colocas las pruebas de lo que estes por probar. Ejemplo Producto
 	public void pruebaIngresarEtiquetas() {
@@ -30,8 +33,16 @@ public class Controlador {
 	public void creaHojaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
-		etiquetas.creaHoja();
+		etiquetas.crearHoja();
 	}
+	
+      //BORRAR HOJAS
+	public void borraHojaEtiquetas() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq();
+		etiquetas.borrarHoja();
+	}
+	
 	
 
 	// CREAR MARCOS
@@ -45,19 +56,37 @@ public class Controlador {
 	public void creaTemplateEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
-		etiquetas.creaTempl();
+		etiquetas.crearTempl();
 	}
 
-	@Test
+
 	// CREAR REGLA
 	public void creaReglaEtiquetas() throws IOException {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
-		etiquetas.creaRegla();
-		
+		etiquetas.creaRegla();	
 	}
 	
 
+	
+	
+	public void imprimirEtiquetaProducto() {
+	    LoginTest etiquetas = new LoginTest();
+	    etiquetas.MingresarEtiq();
+	    System.out.println("hasta aca llega");
+	    etiquetas.MingresoImpresion();
+	    etiquetas.MparaImp();
+	    etiquetas.MimpProd();
+	}
+	
+	
+	
+	@Test 
+	public void borrarTemplateEtiqueta() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq();
+		etiquetas.borrarTempl(nombreT);
+	}
 	
 	
 	/*

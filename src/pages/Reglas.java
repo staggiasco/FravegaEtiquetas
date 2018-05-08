@@ -46,14 +46,14 @@ public class Reglas extends AbstractPageObject{
 
 		regla.click();
 		nuevaRegla.click();
-		System.out.println("ingresé a Reglas");
+		System.out.println("ingresï¿½ a Reglas");
 	
 		
 		CSVReader reader =  new CSVReader(new FileReader(CSV_File));
 		
 		while((cell=reader.readNext())!= null){
 			
-			System.out.println("ingresé al WHILE");
+			System.out.println("ingresï¿½ al WHILE");
 				for (int i=0;i<1;i++) {
 					String nRegla = cell[i];
 					String nTempl = cell[i+1];
@@ -93,7 +93,7 @@ public class Reglas extends AbstractPageObject{
 							botonBuscar.click();
 							
 					String ddd= driver.findElement(By.xpath("//*[@id=\"products\"]/tbody/tr/td[2]")).getText();		
-						System.out.println("Validación: "+ddd);	
+						System.out.println("Validaciï¿½n: "+ddd);	
 							wait.until(ExpectedConditions.visibilityOf(botonBuscar));		
 					driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 					
