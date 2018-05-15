@@ -22,6 +22,8 @@ public class LoginTest extends BaseTest {
 		super.setup();
 		}	
 	
+//================================================================= INICIO ================================================================		
+	
 	public void ingresarEtiq() {
 		HomePage homePage = new HomePage(driver, driverWait);
 		homePage.ingresarEtiquetas();
@@ -32,6 +34,8 @@ public class LoginTest extends BaseTest {
 		dashboard.verNuevasActualizaciones();
 	}
 	
+//================================================================= HOJAS ================================================================	
+
 	public void crearHoja() {
 		Hojas hojas = new Hojas(driver, driverWait);
 		hojas.ingresarAHoja();
@@ -39,16 +43,28 @@ public class LoginTest extends BaseTest {
 	}
 	
 	
-	public void borrarHoja() {
+	public void eliminarHoja() {
 		Hojas hojas = new Hojas(driver, driverWait);
 		hojas.ingresarAHoja();
-		hojas.borrarHoja();
+		hojas.eliminarHoja();
+	}
+
+//================================================================= MARCOS ================================================================		
+	
+	public void crearMarco() {
+		Marcos marcos = new Marcos(driver, driverWait);
+		marcos.ingresarAMarco();
+		marcos.crearNuevoMarco();
 	}
 	
-	public void creaMarco() {
+	public void eliminarMarco( ) {
 		Marcos marcos = new Marcos(driver, driverWait);
-		marcos.ingresarNuevoMarco();
+		marcos.ingresarAMarco();
+		marcos.eliminarMarco();
 	}
+	
+	
+//================================================================= TEMPLATE ================================================================		
 	
 	public void crearTempl() {
 		Templates templ = new Templates(driver, driverWait);
@@ -56,51 +72,34 @@ public class LoginTest extends BaseTest {
 		templ.crearNuevoTempl();
 	}
 	
-	public void borrarTempl(String nombreT) {
+	public void eliminarTempl(String nombreT) {
 		Templates templ = new Templates (driver, driverWait);
 		templ.ingresarATemplate();
 		templ.borrarTemplate(nombreT);
 	}
 	
+//================================================================= REGLAS ================================================================	
 	
-	
-
-	public void creaRegla() throws IOException {
+	public void crearRegla() throws IOException {
 		Reglas regla = new Reglas(driver, driverWait);
-		regla.ingresarNuevaRegla();
-		
-		
-	}
-
-	
-	
-	
-	
-	public void MingresarEtiq() {
-	HomePage homePage = new HomePage(driver, driverWait);
-	homePage.ingresarEtiquetas();
-    }
-
-	public void MingresoImpresion(){
-	Impresion Impresion = new Impresion(driver, driverWait);
-	Impresion.ingresoImpresion();
-
-	}
-
-	public void MparaImp(){
-	Impresion Impresion = new Impresion(driver, driverWait);
-	Impresion.seleccionProducto();
-
-
-	   }
-
-	public void MimpProd(){
-	Impresion Impresion = new Impresion(driver, driverWait);
-	Impresion.imprimirProductoCola();
-
+		regla.ingresarAReglas();
+		regla.crearNuevaRegla();
 	}
 	
+	public void eliminarRegla() {
+		Reglas regla = new Reglas(driver, driverWait);
+		regla.ingresarAReglas();
+		regla.eliminarRegla();
+	}
+
+//================================================================= IMPRESION ================================================================	
 	
+	public void imprimirPrducto () {
+		Impresion impresion = new Impresion (driver, driverWait);
+		impresion.ingresoAImpresion();
+		impresion.seleccionProducto();
+		impresion.imprimirProductoCola();
+	}
 
 
 }

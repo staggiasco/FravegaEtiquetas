@@ -1,9 +1,12 @@
 package pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -25,14 +28,17 @@ public class Marcos extends AbstractPageObject {
 		float alto = 10;
 		int r = (int) (Math.random()*100);
 		
-		private WebElement marco = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[3]/a"));
-		private WebElement nuevoMarco = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[3]/ul/li[1]/a"));
-	//	private WebElement mNombre = driver.findElement(By.id("name"));
+		String nombreMarco = null;
+		
 	
-	
-	public void ingresarNuevoMarco() {
+	public void ingresarAMarco() {
+			WebElement marco = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[3]/a"));
+			marco.click();
+		}
+		
+	public void crearNuevoMarco() {
 		System.out.println("Ingreso a Marcos Nuevo");
-		marco.click();
+		WebElement nuevoMarco = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[3]/ul/li[1]/a"));
 		nuevoMarco.click();
 		// mNombre.sendKeys("SOyunMarco");
 		driver.findElement(By.id("name")).sendKeys(mNombre + r);
@@ -44,5 +50,46 @@ public class Marcos extends AbstractPageObject {
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	}
 	
+	public void eliminarMarco() {
+
+		WebElement registro = driver.findElement(By.xpath("//*[@id='layouts_length']/label/select"));
+		new Select(registro).selectByValue("100");
+
+		int i = 0;
+
+		WebElement tdbody = driver.findElement(By.xpath("//*[@id='layouts']/tbody"));
+
+		List<WebElement> trs = tdbody.findElements(By.xpath("tr"));
+
+		for (WebElement td : trs) {
+
+			i++;
+
+			System.out.println("========================");
+			System.out.println("    La TR de la Tabla   ");
+			System.out.println("========================");
+
+			List<WebElement> tds = td.findElements(By.tagName("td"));
+
+			for (WebElement g : tds) {
+
+				String nomElem = g.getText();
+
+				if (nomElem.equalsIgnoreCase(nombreMarco)) {
+					nomElem = "BORRADO";
+					td.findElement(By.xpath("//*[@id=\"layouts\"]/tbody/tr[" + i + "]/td[1]/button")).click();
+					WebElement botonConf = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/button[1]"));
+					wait.until(ExpectedConditions.visibilityOf(botonConf));
+					botonConf.click();
+				}
+
+				System.out.println(nomElem);
+
+			}
+
+			System.out.println("Contador en :" + i);
+
+		}
+	}
 	
 }

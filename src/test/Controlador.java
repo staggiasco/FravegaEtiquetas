@@ -17,17 +17,19 @@ import pages.Reglas;
 public class Controlador {
 	
 
-String nombreT = "TemplFer222";	
-	
-	
-	
-	// Aca colocas las pruebas de lo que estes por probar. Ejemplo Producto
-	public void pruebaIngresarEtiquetas() {
+String nombreT = "Default pcs";	
+
+
+//================================================================= INICIO ================================================================			
+
+
+	public void loginEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
 		etiquetas.verNuevasActualizaciones();
 	}
 
+//================================================================= HOJAS ================================================================		
 	
 	// CREAR HOJAS
 	public void creaHojaEtiquetas() {
@@ -36,21 +38,30 @@ String nombreT = "TemplFer222";
 		etiquetas.crearHoja();
 	}
 	
-      //BORRAR HOJAS
-	public void borraHojaEtiquetas() {
+      //ELIMINAR HOJAS
+	public void eliminarHojaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
-		etiquetas.borrarHoja();
+		etiquetas.eliminarHoja();
 	}
 	
-	
+//================================================================= MARCOS ================================================================	
 
 	// CREAR MARCOS
 	public void creaMarcoEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(); //Login
-		etiquetas.creaMarco();
+		etiquetas.crearMarco();
 }
+	
+
+	public void eliminarMarcoEtiquetas() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq();
+		etiquetas.eliminarMarco();
+	}
+
+//================================================================= TEMPLATE ================================================================	
 	
 	// CREAR TEMPLATES
 	public void creaTemplateEtiquetas() {
@@ -59,34 +70,51 @@ String nombreT = "TemplFer222";
 		etiquetas.crearTempl();
 	}
 
+	public void eliminarTemplateEtiqueta() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq();
+		etiquetas.eliminarTempl(nombreT);
+	}
+
+//================================================================= REGLAS ================================================================		
 
 	// CREAR REGLA
+	@Test 
 	public void creaReglaEtiquetas() throws IOException {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
-		etiquetas.creaRegla();	
+		etiquetas.crearRegla();	
 	}
+	
+	public void eliminarReglaEtiquetas() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq();
+		etiquetas.eliminarRegla();
+	}
+
+	
+//================================================================= IMPRESION ================================================================	
+	 
+
+	@Test 
+	public void imprimirEtiqueta() throws IOException {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq();
+		etiquetas.crearRegla();	
+	}
+	
+	
 	
 
 	
 	
-	public void imprimirEtiquetaProducto() {
-	    LoginTest etiquetas = new LoginTest();
-	    etiquetas.MingresarEtiq();
-	    System.out.println("hasta aca llega");
-	    etiquetas.MingresoImpresion();
-	    etiquetas.MparaImp();
-	    etiquetas.MimpProd();
-	}
+	
+	
+
 	
 	
 	
-	@Test 
-	public void borrarTemplateEtiqueta() {
-		LoginTest etiquetas = new LoginTest();
-		etiquetas.ingresarEtiq();
-		etiquetas.borrarTempl(nombreT);
-	}
+	
 	
 	
 	/*
