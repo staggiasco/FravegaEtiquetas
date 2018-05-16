@@ -33,6 +33,8 @@ public class Hojas extends AbstractPageObject {
 
 	// String nombreHoja = "HojaMobileF";
 	String nombreHoja = "Carta";
+	String reg = "papers_length";
+	
 
 	public void ingresarAHoja() {
 		WebElement hoja = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[2]/a"));
@@ -45,7 +47,6 @@ public class Hojas extends AbstractPageObject {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
 		WebElement nuevaHoja = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[2]/ul/li[1]/a"));
-
 		nuevaHoja.click();
 
 		driver.findElement(By.id("name")).sendKeys(nombre + (r));
@@ -62,10 +63,11 @@ public class Hojas extends AbstractPageObject {
 	public void eliminarHoja() {
 
 		int i = 0;
-
 		WebElement verHoja = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[2]/ul/li[2]/a"));
 		verHoja.click();
 
+		mostrarRegistros(reg);
+		
 		WebElement tdbody = driver.findElement(By.xpath("//*[@id=\"papers\"]/tbody"));
 
 		List<WebElement> trs = tdbody.findElements(By.xpath("tr"));
@@ -103,4 +105,10 @@ public class Hojas extends AbstractPageObject {
 
 	}
 
+	public void mostrarRegistros(String reg) {
+		WebElement registro = driver.findElement(By.name(reg));
+		new Select(registro).selectByValue("100");
+	}
+	
+	
 }

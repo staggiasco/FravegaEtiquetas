@@ -42,7 +42,7 @@ public class LoginTest extends BaseTest {
 		hojas.crearNuevaHoja();
 	}
 	
-	
+
 	public void eliminarHoja() {
 		Hojas hojas = new Hojas(driver, driverWait);
 		hojas.ingresarAHoja();
@@ -94,11 +94,13 @@ public class LoginTest extends BaseTest {
 
 //================================================================= IMPRESION ================================================================	
 	
-	public void imprimirPrducto () {
+	public void imprimirProducto () {
 		Impresion impresion = new Impresion (driver, driverWait);
 		impresion.ingresoAImpresion();
+		impresion.crearNuevaImpresion();
+		impresion.seleccionarFiltro();
 		impresion.seleccionProducto();
-		impresion.imprimirProductoCola();
+		impresion.imprimirEtiquetas();
 	}
 
 

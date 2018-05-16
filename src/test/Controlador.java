@@ -11,13 +11,10 @@ import junit.framework.TestFailure;
 import junit.framework.TestResult;
 import pages.Reglas;
 
-
-
-
 public class Controlador {
 	
 
-String nombreT = "Default pcs";	
+String nomTempl = "Default pcs";	
 
 
 //================================================================= INICIO ================================================================			
@@ -32,13 +29,15 @@ String nombreT = "Default pcs";
 //================================================================= HOJAS ================================================================		
 	
 	// CREAR HOJAS
+	
 	public void creaHojaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
 		etiquetas.crearHoja();
 	}
 	
-      //ELIMINAR HOJAS
+     //ELIMINAR HOJAS
+	@Test
 	public void eliminarHojaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
@@ -48,12 +47,13 @@ String nombreT = "Default pcs";
 //================================================================= MARCOS ================================================================	
 
 	// CREAR MARCOS
+
 	public void creaMarcoEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(); //Login
 		etiquetas.crearMarco();
 }
-	
+	// ELIMINAR MARCO
 
 	public void eliminarMarcoEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
@@ -64,27 +64,31 @@ String nombreT = "Default pcs";
 //================================================================= TEMPLATE ================================================================	
 	
 	// CREAR TEMPLATES
+	
 	public void creaTemplateEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
 		etiquetas.crearTempl();
 	}
 
+	// ELIMINAR TEMPLATES
+	
 	public void eliminarTemplateEtiqueta() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
-		etiquetas.eliminarTempl(nombreT);
+		etiquetas.eliminarTempl(nomTempl);
 	}
 
 //================================================================= REGLAS ================================================================		
 
 	// CREAR REGLA
-	@Test 
-	public void creaReglaEtiquetas() throws IOException {
+
+	public void creaReglaEtiquetas() throws IOException  {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
-		etiquetas.crearRegla();	
+		etiquetas.crearRegla();
 	}
+	
 	
 	public void eliminarReglaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
@@ -96,31 +100,15 @@ String nombreT = "Default pcs";
 //================================================================= IMPRESION ================================================================	
 	 
 
-	@Test 
-	public void imprimirEtiqueta() throws IOException {
+
+	public void imprimirEtiqueta() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
-		etiquetas.crearRegla();	
+		etiquetas.imprimirProducto();	
 	}
-	
-	
-	
-
 	
 	
 	
 	
 
-	
-	
-	
-	
-	
-	
-	/*
-	@Parameters
-	public static List<String[]> getData(){
-		return pages.Csv.get("C:\\Users\\31953658\\workspace\\FravegaProjectFer\\src\\docs\\ej1.txt");
-	}
-	*/
 }

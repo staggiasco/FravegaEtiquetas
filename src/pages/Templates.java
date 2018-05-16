@@ -37,7 +37,7 @@ public class Templates extends AbstractPageObject {
 	String prod = "100106";
 	static String txt = "";
 
-	String tempReg = "templates_length";
+	String reg = "templates_length";
 
 	String ver = "/html/body/div/nav/ul[1]/li[4]/ul/li[2]/a";
 
@@ -70,7 +70,7 @@ public class Templates extends AbstractPageObject {
 		WebElement verTempl = driver.findElement(By.xpath(ver));
 		verTempl.click();
 
-		mostrarRegistros(tempReg);
+		mostrarRegistros(reg);
 
 		int i = 0;
 
@@ -111,8 +111,8 @@ public class Templates extends AbstractPageObject {
 		}
 	}
 
-	public void mostrarRegistros(String tempReg) {
-		WebElement registro = driver.findElement(By.name(tempReg));
+	public void mostrarRegistros(String reg) {
+		WebElement registro = driver.findElement(By.name(reg));
 		new Select(registro).selectByValue("100");
 	}
 

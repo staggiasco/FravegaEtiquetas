@@ -1,16 +1,10 @@
 package pages;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,8 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.opencsv.CSVReader;
 
-import junit.framework.TestFailure;
-import junit.framework.TestResult;
 import pageFactory.AbstractPageObject;
 
 //@RunWith(value = Parameterized.class)
@@ -38,19 +30,17 @@ public class Reglas extends AbstractPageObject {
 	String nombreRegla = "R1";
 	String ReglaReg = "100";
 
+	
 	public void ingresarAReglas() {
 		driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[5]/a")).click();
 	}
 
 	public void crearNuevaRegla() throws IOException {
 
-		String CSV_File = "C:\\Users\\31953658\\workspace\\FravegaProjectFer\\src\\docs\\reglas2.csv";
+		String CSV_File = "C:\\Users\\31953658\\eclipse-workspace\\Etiquetas\\docs\\reglas.csv";
 		String cell[];
 
-		// WebElement regla =
-		// driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[5]/a"));
-		WebElement nuevaRegla = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[5]/ul/li[2]/a"));
-
+		WebElement nuevaRegla = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[5]/ul/li[1]/a"));
 		nuevaRegla.click();
 		System.out.println("Ingresé a Reglas");
 
@@ -58,7 +48,7 @@ public class Reglas extends AbstractPageObject {
 
 		while ((cell = reader.readNext()) != null) {
 
-			System.out.println("ingresï¿½ al WHILE");
+			System.out.println("Ingresé al WHILE");
 			for (int i = 0; i < 1; i++) {
 				String nRegla = cell[i];
 				String nTempl = cell[i + 1];
@@ -70,12 +60,14 @@ public class Reglas extends AbstractPageObject {
 				String categ = cell[i + 7];
 
 				driver.findElement(By.id("name")).sendKeys(nRegla);
+				
 				new Select(driver.findElement(By.id("cmbTemplate"))).selectByVisibleText(nTempl);
 				driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 				System.out.println(tipEtiq);
 				new Select(driver.findElement(By.id("cmbLabelType"))).selectByValue(tipEtiq);
 				System.out.println(tipEtiq);
 				System.out.println(nSuc);
+				
 				if (nSuc != "") {
 					driver.findElement(By.xpath("//*[@id=\'blockChannel\']/div/button")).click();
 					driver.findElement(By.xpath("//*[@id=\"blockChannel\"]/div/ul/li[1]/div/input")).sendKeys(nSuc);
