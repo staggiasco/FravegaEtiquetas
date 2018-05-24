@@ -89,7 +89,6 @@ String nomTempl = "Default pcs";
 		etiquetas.crearRegla();
 	}
 	
-	
 	public void eliminarReglaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
