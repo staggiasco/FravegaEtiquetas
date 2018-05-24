@@ -21,6 +21,8 @@ public class BaseTest {
 	public static final String WEB_DRIVER_FF_DRIVER_PROPERTY = "webdriver.gecko.driver"; 
 	
 	public static void setup(){
+		
+
 		ChromeOptions ops = new ChromeOptions();
 		ops.addArguments("--disable-notifications");
 		System.setProperty(WEB_DRIVER_CHROME_DRIVER_PROPERTY, WEB_DRIVER_PATH);
@@ -28,8 +30,8 @@ public class BaseTest {
 		driver.navigate().to(URL_TECHNETTS);
 		driver.manage().window().maximize();
 		driverWait = new WebDriverWait(driver,10);
-		
-		/*
+
+	/*	
 		FirefoxOptions ops = new FirefoxOptions();
 		ops.addArguments("--disable-notifications");
 		System.setProperty(WEB_DRIVER_FF_DRIVER_PROPERTY, WEB_FF_DRIVER_PATH);
@@ -37,7 +39,7 @@ public class BaseTest {
 		driver.navigate().to(URL_TECHNETTS);
 		driver.manage().window().maximize();
 		driverWait = new WebDriverWait(driver,10);
-		*/
+	*/	
 		
 		}
 

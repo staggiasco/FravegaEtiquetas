@@ -45,6 +45,9 @@ public class Templates extends AbstractPageObject {
 		WebElement template = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[4]/a"));
 		template.click();
 		System.out.println("Ingresé a Templates");
+		
+
+		
 	}
 
 	public void crearNuevoTempl() {

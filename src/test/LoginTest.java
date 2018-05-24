@@ -80,16 +80,17 @@ public class LoginTest extends BaseTest {
 	
 //================================================================= REGLAS ================================================================	
 	
-	public void crearRegla() throws IOException {
+	public void crearRegla() throws IOException, InterruptedException {
 		Reglas regla = new Reglas(driver, driverWait);
-		regla.ingresarAReglas();
-		regla.crearNuevaRegla();
+		//regla.ingresarAReglas();
+		//regla.crearNuevaRegla();
+		regla.ingresarNuevaRegla();
 	}
 	
 	public void eliminarRegla() {
 		Reglas regla = new Reglas(driver, driverWait);
-		regla.ingresarAReglas();
-		regla.eliminarRegla();
+//		regla.ingresarAReglas();
+	//	regla.eliminarRegla();
 	}
 
 //================================================================= IMPRESION ================================================================	

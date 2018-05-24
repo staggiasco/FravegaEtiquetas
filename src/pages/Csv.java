@@ -20,7 +20,7 @@ public class Csv {
 				// Parse the data by comma using .split() method
 				// Place into a temporary array, then add to List 
 				while ((testRow = br.readLine()) != null) {
-					String[] line = testRow.split(",");
+					String[] line = testRow.split(";");
 					data.add(line);
 				}
 			} catch (FileNotFoundException e) {

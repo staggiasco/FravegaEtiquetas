@@ -1,0 +1,207 @@
+package pages;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.opencsv.CSVReader;
+
+import pageFactory.AbstractPageObject;
+
+public class Reglas extends AbstractPageObject {
+
+	public Reglas(WebDriver driver, WebDriverWait driverWait) {
+		super(driver, driverWait);
+		// TODO Auto-generated constructor stub
+	}
+
+	WebDriverWait wait = new WebDriverWait(driver, 30);
+	private static final TimeUnit SECONDS = null;
+
+	String nombreRegla = "R1";
+	String ReglaReg = "100";
+
+	
+	public void ingresarAReglas() {
+		driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[5]/a")).click();
+	}
+
+	public void crearNuevaRegla() throws IOException {
+		
+		WebElement nuevaRegla = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[5]/ul/li[1]/a"));
+		nuevaRegla.click();
+		System.out.println("Ingresé a Reglas");
+
+		String CSV_File = "C:\\Users\\31953658\\eclipse-workspace\\Etiquetas\\docs\\reglas.csv";
+	
+		CSVReader reader = new CSVReader(new FileReader(CSV_File));
+		List<String[]> myEntries = reader.readAll();
+
+		for (String[] entry: myEntries) {
+		 for(String field: entry) {
+			// System.out.println(field);
+			 String[] campos = field.split(";");
+			 
+			 for(int i=0; i<campos.length; i++) { 
+				 
+				 System.out.println("Element "+i+": "+campos[i]); 
+				 	
+				 String nom = campos[i];
+				 String nTempl = campos[i+1];
+				 String tipEtiq = campos[i+2];
+				 String nSuc = campos[i+3];
+				 String fDesde = campos[i+4];
+				 String fHasta = campos[i+5];
+				 String prod = campos[i+6];
+				 String categoria = campos[i+7];
+				 
+				 driver.findElement(By.id("name")).sendKeys(nom);
+				 new Select(driver.findElement(By.id("cmbTemplate"))).selectByVisibleText(nTempl);
+				 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+				 new Select(driver.findElement(By.id("cmbLabelType"))).selectByVisibleText(tipEtiq);
+				 
+					if(nSuc!="") {
+						driver.findElement(By.xpath("//*[@id=\"blockChannel\"]/div/button")).click();
+						driver.findElement(By.xpath("//*[@id=\"blockChannel\"]/div/ul/li[1]/div/input")).sendKeys(nSuc);					
+						driver.findElement(By.xpath("//*[@id=\"blockChannel\"]/div/ul/li[7]/a/label")).click();
+					}
+					
+		
+				System.out.println(fDesde);
+				driver.findElement(By.id("dtSince")).click();
+				driver.findElement(By.id("dtSince")).clear();
+				driver.findElement(By.id("dtSince")).sendKeys(fDesde);
+					
+				driver.findElement(By.xpath("//*[@id=\"page-wrapper\"]/div[3]/div/div")).click();	
+				
+				System.out.println(fHasta);
+			
+					driver.findElement(By.id("dtUntil")).click();
+					driver.findElement(By.xpath("/html/body/div[2]/div[1]/table/thead/tr[1]/th[3]")).click();
+					driver.findElement(By.xpath("/html/body/div[2]/div[1]/table/thead/tr[1]/th[3]")).click();
+					driver.findElement(By.xpath("/html/body/div[2]/div[1]/table/thead/tr[1]/th[3]")).click();
+					driver.findElement(By.xpath("/html/body/div[2]/div[1]/table/tbody/tr[3]/td[1]")).click();
+
+					if (prod != "") {
+						System.out.println(prod);
+						driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+						driver.findElement(By.id("filterProduct")).sendKeys(prod);
+						WebElement botonBuscarProd = driver.findElement(By.id("btnSearchProducts"));
+						botonBuscarProd.click();
+
+						WebElement botonSave = driver.findElement(By.id("btnSave"));
+						wait.until(ExpectedConditions.visibilityOf(botonSave));
+						botonSave.click();
+
+					} else {
+
+						driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+						driver.findElement(By.id("filterCategory")).sendKeys(categoria);
+						driver.findElement(By.id("btnSearchCategories")).click();
+						WebElement botonBuscarCat = driver.findElement(By.id("btnSearchCategories"));
+						botonBuscarCat.click();
+
+						WebElement botonSave = driver.findElement(By.id("btnSave"));
+						//wait.until(ExpectedConditions.visibilityOf(botonSave));
+						botonSave.click();
+					
+				}
+				
+					driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[5]/a")).click();
+					driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[5]/ul/li[1]/a")).click();
+					driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+					//regla.click();
+					//nuevaRegla.click();
+				
+				
+			 }
+
+		 }
+		}			
+
+	}
+
+	public void eliminarRegla() {
+
+		
+		WebElement verRegla = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[5]/ul/li[2]/a"));
+		verRegla.click();
+		
+		
+		WebElement registro = driver.findElement(By.xpath("//*[@id='rules_length']/label/select"));
+		new Select(registro).selectByValue("100");
+
+		int i = 0;
+
+		WebElement tdbody = driver.findElement(By.xpath("//*[@id='rules']/tbody"));
+
+		List<WebElement> trs = tdbody.findElements(By.xpath("tr"));
+
+		for (WebElement td : trs) {
+
+			i++;
+
+			System.out.println("========================");
+			System.out.println("    La TR de la Tabla   ");
+			System.out.println("========================");
+
+			List<WebElement> tds = td.findElements(By.tagName("td"));
+
+			for (WebElement g : tds) {
+
+				String nomElem = g.getText();
+
+				if (nomElem.equalsIgnoreCase(nombreRegla)) {
+					nomElem = "BORRADO";
+					td.findElement(By.xpath("//*[@id=\"rules\"]/tbody/tr[" + i + "]/td[1]/button")).click();
+					WebElement botonConf = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/button[1]"));
+					wait.until(ExpectedConditions.visibilityOf(botonConf));
+					botonConf.click();
+				}
+
+				System.out.println(nomElem);
+
+			}
+
+			System.out.println("Contador en :" + i);
+
+		}
+	}
+
+	/*
+	 * public static List<String[]> getData() { String location =
+	 * "C:\\Users\\31953658\\workspace\\FravegaProjectFer\\src\\docs\\reglas.csv";
+	 * return Archivos.get(location); }
+	 * 
+	 * 
+	 * 
+	 */
+	// @Parameters
+	/*
+	 * public static void leer() { String location =
+	 * "C:\\Users\\31953658\\workspace\\FravegaProjectFer\\src\\docs\\reglas.csv";
+	 * List <String[]> records = Archivos.get(location);
+	 * 
+	 * for (String[] record: records) { for (String field : record) {
+	 * System.out.println(field); } } }
+	 */
+
+	/*
+	 * public void leerCSV() { String location =
+	 * "C:\\Users\\31953658\\workspace\\FravegaProjectFer\\src\\docs\\reglas.csv";
+	 * List<String[]> records = Archivos.readCSV(location); for (String[] record :
+	 * records) { for (String field : record) { System.out.println(field); } } }
+	 */
+
+}

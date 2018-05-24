@@ -37,7 +37,7 @@ String nomTempl = "Default pcs";
 	}
 	
      //ELIMINAR HOJAS
-	@Test
+	
 	public void eliminarHojaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
@@ -82,8 +82,8 @@ String nomTempl = "Default pcs";
 //================================================================= REGLAS ================================================================		
 
 	// CREAR REGLA
-
-	public void creaReglaEtiquetas() throws IOException  {
+	@Test
+	public void creaReglaEtiquetas() throws IOException, InterruptedException  {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq();
 		etiquetas.crearRegla();
