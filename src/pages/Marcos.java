@@ -24,9 +24,9 @@ public class Marcos extends AbstractPageObject {
 		
 		String mNombre = "Marco";
 		String hojaValue = "2";
-		float ancho = 10;
-		float alto = 10;
-		int r = (int) (Math.random()*100);
+		double ancho = 10;
+		double alto = 10;
+		int r = (int) (Math.random()*1000);
 		
 		String nombreMarco = null;
 		
@@ -36,18 +36,29 @@ public class Marcos extends AbstractPageObject {
 			marco.click();
 		}
 		
-	public void crearNuevoMarco() {
+	public String crearNuevoMarco(String hojaCreada) {
 		System.out.println("Ingreso a Marcos Nuevo");
 		WebElement nuevoMarco = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[3]/ul/li[1]/a"));
 		nuevoMarco.click();
-		// mNombre.sendKeys("SOyunMarco");
-		driver.findElement(By.id("name")).sendKeys(mNombre + r);
-		new Select(driver.findElement(By.id("cmbPaper"))).selectByValue(hojaValue);
-		driver.findElement(By.id("width")).sendKeys(Float.toString(ancho));
-		driver.findElement(By.id("height")).sendKeys(Float.toString(alto));
+		
+		
+		String marcoCreado = (mNombre + r);
+		driver.findElement(By.id("name")).sendKeys(marcoCreado);
+		new Select(driver.findElement(By.id("cmbPaper"))).selectByVisibleText(hojaCreada);
+		driver.findElement(By.id("width")).sendKeys(Double.toString(ancho));
+		driver.findElement(By.id("height")).sendKeys(Double.toString(alto));
 		driver.findElement(By.id("btnSave")).click();
 		new Select(driver.findElement(By.name("layouts_length"))).selectByValue("100");
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		
+		//*[@id="layouts"]/tbody/tr[28]/td[2]
+		
+		System.out.println(ancho);
+		marcoCreado = marcoCreado +" (" +ancho+"0" + "x" +alto+"0" + ")";
+		
+		return marcoCreado;
+		
+		
 	}
 	
 	public void eliminarMarco() {

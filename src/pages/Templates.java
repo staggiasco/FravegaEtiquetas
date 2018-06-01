@@ -33,40 +33,46 @@ public class Templates extends AbstractPageObject {
 
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 
-	// String nombreT = "TemplFer2222";
+	String nTempl = "TemplFer";
 	String prod = "100106";
 	static String txt = "";
-
+	int r = (int) (Math.random()*100);
+	
 	String reg = "templates_length";
-
 	String ver = "/html/body/div/nav/ul[1]/li[4]/ul/li[2]/a";
 
 	public void ingresarATemplate() {
 		WebElement template = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[4]/a"));
 		template.click();
-		System.out.println("Ingresé a Templates");
-		
-
-		
+		System.out.println("Ingresé a Templates");	
 	}
 
-	public void crearNuevoTempl() {
+	
+	public String crearNuevoTempl(String marcoCreado) {
 		WebElement nuevoTempl = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[4]/ul/li[1]/a"));
 		nuevoTempl.click();
 
-		// driver.findElement(By.id("name")).sendKeys(nombreT);
-		new Select(driver.findElement(By.id("cmbLayout"))).selectByValue("2");
+		String templCreado = (nTempl + r);
+		driver.findElement(By.id("name")).sendKeys(templCreado);
+		new Select(driver.findElement(By.id("cmbLayout"))).selectByVisibleText(marcoCreado);
 		driver.findElement(By.id("filterProduct")).sendKeys(prod);
 		driver.findElement(By.id("btnSearchProducts")).click();
 		System.out.println("READD FILLLLEEE");
 		ingresarHTML();
+		driver.findElement(By.id("btnSave")).click();
+		
+		return templCreado;
+		
 	}
 
 	public void ingresarHTML() {
+		
 		Archivos arch = new Archivos();
-		String direccion = "C:\\Users\\31953658\\workspace\\FravegaProjectFer\\src\\docs\\DLavarropas(190x138).html";
+		
+		String direccion = "C:\\Users\\31953658\\eclipse-workspace\\Etiquetas\\docs\\temChico.html";
 		txt = arch.readTxt(direccion);
 		driver.findElement(By.xpath("//*[@id='editor']/textarea")).sendKeys(txt);
+	
 	}
 
 	public void borrarTemplate(String nombreT) {

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.xalan.xsltc.compiler.Template;
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
 
 import pageFactory.AbstractPageObject;
 import pages.DashBoard;
@@ -24,9 +25,9 @@ public class LoginTest extends BaseTest {
 	
 //================================================================= INICIO ================================================================		
 	
-	public void ingresarEtiq() {
+	public void ingresarEtiq(String perfil) {
 		HomePage homePage = new HomePage(driver, driverWait);
-		homePage.ingresarEtiquetas();
+		homePage.ingresarEtiquetas(perfil);
 		}
 	
 	public void verNuevasActualizaciones() {
@@ -36,10 +37,13 @@ public class LoginTest extends BaseTest {
 	
 //================================================================= HOJAS ================================================================	
 
-	public void crearHoja() {
+	public String crearHoja() {
 		Hojas hojas = new Hojas(driver, driverWait);
 		hojas.ingresarAHoja();
-		hojas.crearNuevaHoja();
+		//hojas.crearNuevaHoja(); // Version 1.0
+		String nombreHoja = hojas.crearNuevaHoja();
+	
+		return nombreHoja;
 	}
 	
 
@@ -49,12 +53,24 @@ public class LoginTest extends BaseTest {
 		hojas.eliminarHoja();
 	}
 
+	
+	
+	public void crearHojaIncorrecta() throws InterruptedException {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.crearMargenesIncorrectos();
+	}
+	
 //================================================================= MARCOS ================================================================		
 	
-	public void crearMarco() {
+	public String crearMarco(String hojaCreada) {
 		Marcos marcos = new Marcos(driver, driverWait);
 		marcos.ingresarAMarco();
-		marcos.crearNuevoMarco();
+		//marcos.crearNuevoMarco(hojaCreada); // Version1.0
+		String nombreMarco = marcos.crearNuevoMarco(hojaCreada);
+		
+		return nombreMarco;
+		
 	}
 	
 	public void eliminarMarco( ) {
@@ -66,10 +82,13 @@ public class LoginTest extends BaseTest {
 	
 //================================================================= TEMPLATE ================================================================		
 	
-	public void crearTempl() {
+	public String crearTempl(String marcoCreado) {
 		Templates templ = new Templates(driver, driverWait);
 		templ.ingresarATemplate();
-		templ.crearNuevoTempl();
+		String nombreTempl = templ.crearNuevoTempl(marcoCreado);
+				
+		return nombreTempl;
+		
 	}
 	
 	public void eliminarTempl(String nombreT) {
@@ -80,10 +99,13 @@ public class LoginTest extends BaseTest {
 	
 //================================================================= REGLAS ================================================================	
 	
-	public void crearRegla() throws IOException, InterruptedException {
+	public String crearRegla(String templCreado) throws IOException, InterruptedException {
 		Reglas regla = new Reglas(driver, driverWait);
 		regla.ingresarAReglas();
-		regla.crearNuevaRegla();
+		//regla.crearNuevaRegla(templCreado);
+		String prodRegla = regla.crearNuevaRegla(templCreado);
+		
+		return prodRegla;
 	}
 	
 	public void eliminarRegla() {
@@ -94,14 +116,20 @@ public class LoginTest extends BaseTest {
 
 //================================================================= IMPRESION ================================================================	
 	
-	public void imprimirProducto () {
+	public void imprimirProducto (String prodRegla) throws InterruptedException {
 		Impresion impresion = new Impresion (driver, driverWait);
 		impresion.ingresoAImpresion();
 		impresion.crearNuevaImpresion();
-		impresion.seleccionarFiltro();
+		impresion.seleccionarFiltro(prodRegla);
 		impresion.seleccionProducto();
 		impresion.imprimirEtiquetas();
 	}
 
+	
+	public void buscarImpr () {
+		Impresion impresion = new Impresion (driver, driverWait);
+		impresion.ingresoAImpresion();
+		impresion.buscarImpresion(null);
+	}
 
 }

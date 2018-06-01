@@ -1,0 +1,50 @@
+<div style="padding: 5mm 6mm 5mm 6mm;height: 30mm;">
+	<div>
+		<h4 style="font-family:GBlack; margin: 0mm;text-transform: uppercase; font-size:13px;">{{categoria}}</h4>
+    	<h4 name="productName-{{sku}}" style="font-family:GBold; margin: 0mm;">{{nombre}}</h4>
+		<p style="font-size: 10px;font-family:GBook;color: #5c585a;margin:0.5mm 0mm;">{{sku}} | {{Origen}}</p>
+	</div>
+	<div style="margin-top:-5px;">
+		<img src="/images/barra.png" style="width:100%;height: 2mm;margin-top:1mm;"/>
+	</div>
+	<div style="margin-top:-10px;">
+		<h1 style="margin:0px;"><span style="font-family:GBook; vertical-align: middle;">$</span><span style="font-family:GBlack; font-size: 44px; vertical-align: middle;">{{precio}}</span></h1>
+		<p style="font-size: 8px; font-family:GBook; color: #5c585a; margin: 0mm;margin-top:-5px;">PRECIO CONTADO: EFECTIVO, TARJETA DE DÉBITO ó TARJETA DE CRÉDITO EN 1 PAGO</p>
+	</div>
+</div>
+<div>
+    <img src="/images/footer.png" style="width: 60.5mm; height: 5mm;"/>
+</div>
+<script>
+
+    setTimeout(function () {
+    var modalFrame = document.getElementById("label");
+    var products = modalFrame != null ? modalFrame.contentWindow.document.getElementsByName("productName-{{sku}}") : document.getElementsByName("productName-{{sku}}");
+    
+    var idx = products.length - 1;
+    if(idx > -1)
+        setFontSize(products[idx]);
+    
+    for(var i = 0; i < products.length; i++)
+        products[i].innerText = capitalizeStr(products[i].innerText);
+    
+    function capitalizeStr(str){
+        if(str != null && str != ""){
+            return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        }
+    }
+    
+    function setFontSize(product){
+        debugger;
+        if(product.parentElement.offsetHeight > 170){
+            product.style.fontSize = "9px";
+        }else if(product.parentElement.offsetHeight > 160){
+            product.style.fontSize = "10px";
+        }else if(product.parentElement.offsetHeight > 150){
+            product.style.fontSize = "11px";
+        }else{
+            product.style.fontSize = "12px";
+        }
+    }
+    }, 170);
+</script> 
