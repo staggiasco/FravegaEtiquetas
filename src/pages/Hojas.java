@@ -20,6 +20,7 @@ public class Hojas extends AbstractPageObject {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -42,6 +43,13 @@ public class Hojas extends AbstractPageObject {
 		hoja.click();
 	}
 
+	public void ingresarCrearHoja() {
+	System.out.println("metodo ingresarNuevaHoja");
+	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	WebElement nuevaHoja = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[2]/ul/li[1]/a"));
+	nuevaHoja.click();	
+	}
+	
 	public String crearNuevaHoja() {
 
 		System.out.println("metodo ingresarNuevaHoja");
@@ -158,5 +166,91 @@ public class Hojas extends AbstractPageObject {
 	}
 	
 	
-	
+	public void CasosNegativosHojas(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		                                           
+			
+		//WebElements
+		WebElement wnombre = driver.findElement(By.xpath("//*[@id=\"name\"]"));
+	    WebElement wancho = driver.findElement(By.xpath("//*[@id=\"width\"]"));
+	    WebElement walto =  driver.findElement(By.xpath("//*[@id=\"height\"]"));
+	    WebElement wsuperior = driver.findElement(By.xpath("//*[@id=\"margin-top\"]"));
+	    WebElement winferior = driver.findElement(By.xpath("//*[@id=\"margin-bottom\"]"));
+	    WebElement wizq = driver.findElement(By.xpath("//*[@id=\"margin-left\"]"));
+	    WebElement wderecho = driver.findElement(By.xpath("//*[@id=\"margin-right\"]"));
+	    
+		//Limpiar campos
+	    wnombre.clear();
+	    wancho.clear();
+	    walto.clear();
+	    wsuperior.clear();
+	    winferior.clear();
+	    wizq.clear();
+	    wderecho.clear();
+	    	    
+		//Ingresando Datos
+		wnombre.sendKeys(nombre);
+		wancho.sendKeys(ancho);
+		walto.sendKeys(alto);
+		new Select(driver.findElement(By.id("cmbOrientation"))).selectByVisibleText("Horizontal");
+		wsuperior.sendKeys(msuperiro);
+		winferior.sendKeys(minferior);
+		wizq.sendKeys(mizq);
+		wderecho.sendKeys(mderecho);
+		
+		if (nombre == "Crea y Cancela") {
+			driver.findElement(By.xpath("//*[@id=\"btnCancel\"]")).click();	
+			WebElement msjhojas = driver.findElement(By.xpath("//*[@id=\"page-wrapper\"]/div[1]/h2"));
+			Assert.assertEquals(msjhojas.getText(),"Hojas");
+		}
+		else {
+			driver.findElement(By.xpath("//*[@id=\"btnSave\"]/span[1]")).click();
+			
+			switch(nombre){
+			 
+			case "4444":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+				break;    
+			case "" :
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='toast-container']/div/div[2]"))).click();
+				break; 
+			case "Ancho Vacio":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div"))).click();
+				break;
+			case "Alto Vacio":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+			case "MSuperior Vacio":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+				break;
+			case "MInferior Vacio":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+				break;
+			case "MDerecho Vacio":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+				break;
+			case "Ancho con letras":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div"))).click();
+				break;
+			case "Alto con Letras":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+				break;	
+			case "MSuperior con letras":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+				break;	
+			case "MInferior con letras":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+				break;	
+			case "Mizq":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+				break;		
+			case "MDerecho":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+				break;	
+			case "Magenes superan hoja":
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+				break;		
+				
+				
+   }
+  }
+ }
 }

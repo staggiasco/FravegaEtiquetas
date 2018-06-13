@@ -4,7 +4,10 @@ import java.io.IOException;
 
 import org.apache.xalan.xsltc.compiler.Template;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageFactory.AbstractPageObject;
 import pages.DashBoard;
@@ -19,16 +22,17 @@ public class LoginTest extends BaseTest {
 	
 	//CONSTRUCTOR
 	
+	
 	public LoginTest() {
 		super.setup();
-		}	
+	}	
 	
 //================================================================= INICIO ================================================================		
 	
 	public void ingresarEtiq(String perfil) {
 		HomePage homePage = new HomePage(driver, driverWait);
 		homePage.ingresarEtiquetas(perfil);
-		}
+	}
 	
 	public void verNuevasActualizaciones() {
 		DashBoard dashboard = new DashBoard(driver, driverWait);
@@ -37,7 +41,7 @@ public class LoginTest extends BaseTest {
 	
 //================================================================= HOJAS ================================================================	
 
-	public String crearHoja() {
+	public String tCrearHoja() {
 		Hojas hojas = new Hojas(driver, driverWait);
 		hojas.ingresarAHoja();
 		//hojas.crearNuevaHoja(); // Version 1.0
@@ -46,8 +50,13 @@ public class LoginTest extends BaseTest {
 		return nombreHoja;
 	}
 	
+	public void tIngresarCrearHoja() {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.ingresarCrearHoja();
+	}
 
-	public void eliminarHoja() {
+	public void tEliminarHoja() {
 		Hojas hojas = new Hojas(driver, driverWait);
 		hojas.ingresarAHoja();
 		hojas.eliminarHoja();
@@ -55,12 +64,122 @@ public class LoginTest extends BaseTest {
 
 	
 	
-	public void crearHojaIncorrecta() throws InterruptedException {
+	
+	public void tCrearHojaIncorrecta() throws InterruptedException {
 		Hojas hojas = new Hojas(driver, driverWait);
 		hojas.ingresarAHoja();
 		hojas.crearMargenesIncorrectos();
 	}
 	
+	//--------------------------------------------- CASOS NEGATIVOS HOJAS ---------------------------------------------------------------------------------------
+	
+	
+	public void tIngresarNumerosEnNombre(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.ingresarCrearHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+	}
+	
+	public void tNombreVacio(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.ingresarCrearHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+	}
+	
+	public void tAnchoVacio(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.ingresarCrearHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+	}
+	
+	public void tAltoVacio(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+	}
+	
+	public void tMargenSuperiorVacio(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);	
+	}
+	
+	public void tMargenInferiorVacio(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+	}
+	
+	public void tMargenIzqVacio(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+	}
+	
+	public void tMargenDerechoVacio(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+    }
+	
+	public void tCrearHojaVacia(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+	}
+	
+	public void tCrearHojaCancelar(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+	}
+	
+	public void tCrearHojaAnchoConLetras(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+	}
+	
+	public void tCrearHojaAltoConLetras(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho);
+	}
+	
+	  public void tCrearHojaMargenSupConLetras(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+		Hojas hojas = new Hojas(driver, driverWait);
+		hojas.ingresarAHoja();
+		hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho); 
+	}
+	  
+	    public void tCrearHojaMargenInfConLetras(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+	    	Hojas hojas = new Hojas(driver, driverWait);
+			hojas.ingresarAHoja();
+			hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho); 	
+	}
+	    
+	    public void tCrearHojaMargenIzqConLetras(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+	    	Hojas hojas = new Hojas(driver, driverWait);
+			hojas.ingresarAHoja();
+			hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho); 
+	}
+	
+	    public void tCrearHojaMargenDerechoConLetras(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+	    	Hojas hojas = new Hojas(driver, driverWait);
+			hojas.ingresarAHoja();
+			hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho); 
+	}
+	 
+	    public void tCrearHojaMargenesSuperanHoja(String nombre, String ancho, String alto, String msuperiro, String minferior, String mizq, String mderecho) {
+	    	Hojas hojas = new Hojas(driver, driverWait);
+			hojas.ingresarAHoja();
+			hojas.CasosNegativosHojas(nombre,ancho,alto,msuperiro,minferior,mizq,mderecho); 
+	}
+	    
+	  
 //================================================================= MARCOS ================================================================		
 	
 	public String crearMarco(String hojaCreada) {
@@ -79,6 +198,13 @@ public class LoginTest extends BaseTest {
 		marcos.eliminarMarco();
 	}
 	
+//-------------------------------------------------------------- CASOS NEGATIVOS MARCOS -----------------------------------------------------
+	
+	public void tCrearMarcoVacio(String hojaCreada2, String nombre, String ancho, String alto) {
+		Marcos marcos = new Marcos(driver, driverWait);
+		marcos.ingresarAMarco();
+		marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
 	
 //================================================================= TEMPLATE ================================================================		
 	

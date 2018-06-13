@@ -1,22 +1,23 @@
 package test;
 
 import java.io.IOException;
-import java.util.Enumeration;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.concurrent.TimeUnit;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-import junit.framework.TestFailure;
-import junit.framework.TestResult;
-import pages.Reglas;
 
 public class Controlador {
 	
 String perfil = "admin";
 
 String nombreT = "Default pcs";	
+
+
 
 
 
@@ -40,7 +41,7 @@ String nombreT = "Default pcs";
 	public String creaHojaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
-		String hojaCreada = etiquetas.crearHoja();
+		String hojaCreada = etiquetas.tCrearHoja();
 		
 		return hojaCreada;
 	}
@@ -50,40 +51,207 @@ String nombreT = "Default pcs";
 	public void eliminarHojaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
-		etiquetas.eliminarHoja();
+		etiquetas.tEliminarHoja();
 	}
 	
-
+	
 	public void creaHojaIncorrecta() throws InterruptedException {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
-		etiquetas.crearHojaIncorrecta();
-		
+		etiquetas.tCrearHojaIncorrecta();
 	}
 	
+	
+	//------------------------------------------ CASOS NEGATIVOS HOJAS  ---------------------------------------------------------------------------------------------------
+	
+	//INTENTAR CREAR HOJA - NOMBRE INGRESANDO NUMEROS
+	
+	public void cNombraeConNumeros() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tIngresarNumerosEnNombre("4444","5","5","5","5","5","5");
+	}
+	
+	//INTENTAR CREAR HOJA - NOMBRE "VACIO".
+	
+	public void cNombreVacio() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tNombreVacio("","5","5","5","5","5","5");
+	}
+	
+	//INTENTAR CREAR HOJA - ANCHO "VACIO"
+	
+	public void cAnchoVacio() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tAnchoVacio("Ancho Vacio","","5","5","5","5","5");
+	}
+	
+	//INTENTAR CREAR HOJA - ALTO "VACIO"
+	
+	public void cAltoVacio() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tAltoVacio("Alto vacio","5","","5","5","5","5");
+    }
+	
+	//INTENTAR CREAR HOJA - MARGEN SUPERIOR "VACIO"
+	
+	public void cMargenSuperiorVacio() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+	    etiquetas.tMargenSuperiorVacio("MSuperior Vacio","5","5","","5","5","5");
+	}
+	
+	//INTENTAR CREAR HOJA - MARGEN INFERIOR "VACIO"
+	
+	public void cMargenInferiorVacio() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tMargenInferiorVacio("MInferior Vacio","5","5","5","","5","5");
+	}
+	
+	//INTENTAR CREAR HOJA - MARGEN IZQ "VACIO"
+	
+    public void cMargenInfeiorIzqVacio() {
+    	LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tMargenIzqVacio("MIzq Vacio","5","5","5","5","","5");
+    }
+    
+    //INTENTAR CREAR HOJA - MARGEN DERECHO "VACIO"
+   
+	public void cMargenDerechoVacio() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tMargenDerechoVacio("MDerecho Vacio","5","5","5","5","5","");
+	}
+	
+	//INTENTAR CREAR HOJA - TODOS LOS DATOS "VACIOS"
+	
+    public void cCrearHojaVacia() {
+    	LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tCrearHojaVacia("","","","","","","");
+    }
+   	//INTENTAR CREAR HOJA - CANCELAR
+    
+	public void cCrearHojaCancelar() {
+	    	LoginTest etiquetas = new LoginTest();
+			etiquetas.ingresarEtiq(perfil);
+			etiquetas.tIngresarCrearHoja();
+			etiquetas.tCrearHojaCancelar("Crea y Cancela","5","5","5","5","5","5");
+    }
+    
+    //INTENTAR CREAR HOJA - ANCHO INGRESAR LETRAS
+	
+    public void cCrearHojaAnchoConLetras() {
+    	LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tCrearHojaAnchoConLetras("Ancho con letras","Ancho","5","5","5","5","5");
+    }
+	
+	//INTENTAR CREAR HOJA - ALTO INGRESAR LETRAS
+    
+	public void cCrearHojaAltoConLetras() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tCrearHojaAltoConLetras("Alto con Letras","5","Alto","5","5","5","5");
+	}
+    
+    //INTENTAR CREAR HOJA - MARGEN SUPERIOR CON LETRAS
+	
+    public void cCrearHojaMargenSupConLetras() {
+    	LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tCrearHojaMargenSupConLetras("MSuperior con letras","5","5","Msuperior","5","5","5");
+    }
+    
+  //INTENTAR CREAR HOJA - MARGEN INFERIOR CON LETRAS
+    
+    public void cCrearHojaMargenInfConLetras() {
+    	LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tCrearHojaMargenInfConLetras("MInferior con letras","5","5","5","Minferior","5","5");
+    }
+	
+    //INTENTAR CREAR HOJA - MARGEN IZQ CON LETRAS
+    
+    public void cCrearHojaMargenIzqConLetras() {
+    	LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tCrearHojaMargenIzqConLetras("Mizq con letras","5","5","5","5","Mizq","5");
+    }
+	
+    //INTENTAR CREAR HOJA - MARGEN DERECHO CON LETRAS
+    
+    public void cCrearHojaMargenDerechoConLetras() {
+    	LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tCrearHojaMargenDerechoConLetras("Mizq con letras","5","5","5","5","5","MDerecho");
+    }
+    
+    //INTENTAR CREAR HOJA - MARGENES SUPERAN HOJA
+    
+    public void cCrearHojaMargenesSuperanHoja() {
+    	LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		etiquetas.tIngresarCrearHoja();
+		etiquetas.tCrearHojaMargenesSuperanHoja("Magenes superan hoja","5","5","50","50","50","50");
+    }
+  
 //================================================================= MARCOS ================================================================	
 
 	// CREAR MARCOS
 
-	public void creaMarcoEtiquetas() {
+	public void cCreaMarcoEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil); //Login
 
-	//	etiquetas.crearMarco(hojaCreada);
+	//etiquetas.crearMarco(hojaCreada);
 }
 	// ELIMINAR MARCO
 
-	public void eliminarMarcoEtiquetas() {
+	public void cEliminarMarcoEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
 		etiquetas.eliminarMarco();
 	}
 
+	
+// ----------------------------------------------- CASOS NEGATIVOS MARCOS -------------------------------------------------------------------
+	
+	// TODOS LOS DATOS "VACIOS"
+	@Test
+	public void cCreaMarcoCamposVacios() {
+		LoginTest etiquetas = new LoginTest();
+		etiquetas.ingresarEtiq(perfil);
+		String hojaCreada2 = etiquetas.tCrearHoja();
+		etiquetas.tCrearMarcoVacio(hojaCreada2, "", "", "");
+	}
+	
+
 //================================================================= TEMPLATE ================================================================	
 	
 	// CREAR TEMPLATES
 
-	public void creaTemplateEtiquetas() {
+	public void cCreaTemplateEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
 		etiquetas.crearTempl(nombreT);
@@ -91,7 +259,7 @@ String nombreT = "Default pcs";
 
 	// ELIMINAR TEMPLATES
 	
-	public void eliminarTemplateEtiqueta() {
+	public void cEliminarTemplateEtiqueta() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
 		etiquetas.eliminarTempl(nombreT);
@@ -101,15 +269,15 @@ String nombreT = "Default pcs";
 
 	// CREAR REGLA
 
-	public void creaReglaEtiquetas() throws IOException, InterruptedException  {
+	public void cCreaReglaEtiquetas() throws IOException, InterruptedException  {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
-	//	etiquetas.crearRegla();
+	    //etiquetas.crearRegla();
 	}
 	
 	
 	//
-	public void eliminarReglaEtiquetas() {
+	public void cEliminarReglaEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
 		etiquetas.eliminarRegla();
@@ -120,14 +288,14 @@ String nombreT = "Default pcs";
 	 
 
 	
-	public void imprimirEtiqueta() throws InterruptedException {
+	public void cImprimirEtiqueta() throws InterruptedException {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
-		//etiquetas.imprimirProducto();	
+		etiquetas.imprimirProducto(nombreT);	
 	}
 	
 
-	public void buscarImpr() {
+	public void cBuscarImpr() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
 		etiquetas.buscarImpr();
@@ -138,12 +306,12 @@ String nombreT = "Default pcs";
 
 	
 	// CREAR HOJAS
-	@Test
+	
 	public void ejecutarCircuitoCompleto() throws InterruptedException, IOException {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
 		
-		String hojaCreada = etiquetas.crearHoja();
+		String hojaCreada = etiquetas.tCrearHoja();
 		System.out.println("====================================================");
 		System.out.println("LA HOJA CREADA ES: " + hojaCreada);
 		System.out.println("====================================================");

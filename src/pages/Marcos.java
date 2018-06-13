@@ -42,7 +42,8 @@ public class Marcos extends AbstractPageObject {
 		nuevoMarco.click();
 		
 		
-		String marcoCreado = (mNombre + r);
+		
+		String marcoCreado = (mNombre + 1);
 		driver.findElement(By.id("name")).sendKeys(marcoCreado);
 		new Select(driver.findElement(By.id("cmbPaper"))).selectByVisibleText(hojaCreada);
 		driver.findElement(By.id("width")).sendKeys(Double.toString(ancho));
@@ -103,4 +104,39 @@ public class Marcos extends AbstractPageObject {
 		}
 	}
 	
+	public void CasosNegativosMarcos(String hojaCreada2, String nombre, String ancho, String alto) {
+		
+		System.out.println("Ingreso a Marcos Nuevo");
+		WebElement nuevoMarco = driver.findElement(By.xpath("/html/body/div/nav/ul[1]/li[3]/ul/li[1]/a"));
+		nuevoMarco.click();
+		System.out.println("La nueva hoja es: " + hojaCreada2);
+		
+		
+		//WebElements
+		WebElement wnombre = driver.findElement(By.xpath("//*[@id=\"name\"]"));
+		WebElement wancho  = driver.findElement(By.xpath("//*[@id=\"width\"]"));
+		WebElement walto   = driver.findElement(By.xpath("//*[@id=\"height\"]"));
+	
+		//Limpiar campos
+		wnombre.clear();
+		wancho.clear();
+		walto.clear();
+		
+		//Ingresando datos
+		wnombre.sendKeys(nombre);
+		new Select(driver.findElement(By.id("cmbPaper"))).selectByVisibleText(hojaCreada2);
+		wancho.sendKeys(ancho);
+		walto.sendKeys(alto);
+		
+		driver.findElement(By.xpath("//*[@id=\"btnSave\"]/span[1]")).click();
+		
+		switch(nombre){
+		 
+		case "":
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
+			break;    
+	}
+	
+	
+ }
 }

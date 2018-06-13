@@ -69,7 +69,7 @@ public class Templates extends AbstractPageObject {
 		
 		Archivos arch = new Archivos();
 		
-		String direccion = "C:\\Users\\31953658\\eclipse-workspace\\Etiquetas\\docs\\temChico.html";
+		String direccion = "C:\\Users\\32343720\\eclipse-workspace\\FravegaEtiquetas\\docs\\temChico.html";
 		txt = arch.readTxt(direccion);
 		driver.findElement(By.xpath("//*[@id='editor']/textarea")).sendKeys(txt);
 	
