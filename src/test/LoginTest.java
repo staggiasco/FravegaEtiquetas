@@ -200,12 +200,75 @@ public class LoginTest extends BaseTest {
 	
 //-------------------------------------------------------------- CASOS NEGATIVOS MARCOS -----------------------------------------------------
 	
+	// CREAR MARCO - TODOS LOS DATOS "VACIOS"
 	public void tCrearMarcoVacio(String hojaCreada2, String nombre, String ancho, String alto) {
 		Marcos marcos = new Marcos(driver, driverWait);
 		marcos.ingresarAMarco();
 		marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
 	}
 	
+	// CREA MARCO - NOMBRE "VACIO"
+	public void tCrearMarcoNombreVacio(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - ANCHO "VACIO"
+	public void tCrearMarcoAnchoVacio(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - ALTO "VACIO"
+	public void tCrearMarcoAltoVacio(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - NOMBRE SUPERA LIMITE
+	public void tCrearMarcoNombreSuperaLimite(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - ANCHO SUPERA LIMITE
+	public void tCrearMarcoAnchoSuperaLimite(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - ALTO SUPERA LIMITE
+	public void tCrearMarcoAltoSuperaLimite(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - CREA Y CANCELA
+	public void tCrearMarcoCreaYCancela(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}	
+	
+	// CREA MARCO - ALTO CON LETRAS
+	public void tCrearMarcoCreaAltoConLetras(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}	
+	
+	// CREA MARCO - ANCHO CON LETRAS
+		public void tCrearMarcoCreaAnchoConLeteas(String hojaCreada2, String nombre, String ancho, String alto) {
+		Marcos marcos = new Marcos(driver, driverWait);
+		marcos.ingresarAMarco();
+		marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+		}
 //================================================================= TEMPLATE ================================================================		
 	
 	public String crearTempl(String marcoCreado) {
