@@ -2,7 +2,6 @@ package pages;
 
 import java.util.List;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -64,7 +63,7 @@ public class Marcos extends AbstractPageObject {
 	}
 	
 	public void eliminarMarco() {
-		
+
 		WebElement registro = driver.findElement(By.xpath("//*[@id='layouts_length']/label/select"));
 		new Select(registro).selectByValue("100");
 
@@ -129,46 +128,15 @@ public class Marcos extends AbstractPageObject {
 		wancho.sendKeys(ancho);
 		walto.sendKeys(alto);
 		
+		driver.findElement(By.xpath("//*[@id=\"btnSave\"]/span[1]")).click();
 		
-		if (nombre == "Crea y Cancela") {
-			driver.findElement(By.xpath("//*[@id=\"btnCancel\"]")).click();	
-					
-			WebElement msjhojas = driver.findElement(By.xpath("//*[@id=\"page-wrapper\"]/div[1]/h2"));
-			Assert.assertEquals(msjhojas.getText(),"Marcos");
-		}
-		else {
-			driver.findElement(By.xpath("//*[@id=\"btnSave\"]/span[1]")).click();
-
-				
 		switch(nombre){
 		 
 		case "":
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
-			break;  
-		case "Ancho Vacio":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
-			break; 
-		case "Alto Vacio":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div"))).click();
-			break;	
-		case "Nombre superaaaaaaaaaaaaaaaaa limiteeeeeeeeeeeeeeeeeeeee":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
-			break;
-		case "Ancho supera Limite":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
-			break;	
-		case "Alto supera limite":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
-			break;		
-		case "Alto con letras":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
-			break;
-		case "Ancho con letras":
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"toast-container\"]/div/div[2]"))).click();
-			break;	
-		
+			break;    
 	}
 	
-  }	
+	
  }
 }

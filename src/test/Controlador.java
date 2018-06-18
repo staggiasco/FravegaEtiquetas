@@ -227,7 +227,7 @@ String nombreT = "Default pcs";
 	//etiquetas.crearMarco(hojaCreada);
 }
 	// ELIMINAR MARCO
-	@Test
+
 	public void cEliminarMarcoEtiquetas() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
@@ -237,94 +237,13 @@ String nombreT = "Default pcs";
 	
 // ----------------------------------------------- CASOS NEGATIVOS MARCOS -------------------------------------------------------------------
 	
-	// CREAR MARCO - TODOS LOS DATOS "VACIOS"
-	
+	// TODOS LOS DATOS "VACIOS"
+	@Test
 	public void cCreaMarcoCamposVacios() {
 		LoginTest etiquetas = new LoginTest();
 		etiquetas.ingresarEtiq(perfil);
 		String hojaCreada2 = etiquetas.tCrearHoja();
 		etiquetas.tCrearMarcoVacio(hojaCreada2, "", "", "");
-	}
-	
-	// CREA MARCO - NOMBRE "VACIO"
-	
-	public void cCrearMarcoNombreVacio() {
-		LoginTest etiquetas = new LoginTest();
-		etiquetas.ingresarEtiq(perfil);
-		String hojaCreada2 = etiquetas.tCrearHoja();
-		etiquetas.tCrearMarcoNombreVacio(hojaCreada2, "", "25", "25");	
-	}
-	
-	// CREA MARCO - NOMBRE "VACIO"
-	
-	public void cCrearMarcoAnchoVacio() {
-		LoginTest etiquetas = new LoginTest();
-		etiquetas.ingresarEtiq(perfil);
-		String hojaCreada2 = etiquetas.tCrearHoja();
-		etiquetas.tCrearMarcoAnchoVacio(hojaCreada2, "Ancho Vacio", "", "25");	
-	}
-	
-	// CREA MARCO - NOMBRE "VACIO"
-	
-	public void cCrearMarcoAltoVacio() {
-		LoginTest etiquetas = new LoginTest();
-		etiquetas.ingresarEtiq(perfil);
-		String hojaCreada2 = etiquetas.tCrearHoja();
-		etiquetas.tCrearMarcoAltoVacio(hojaCreada2, "Alto Vacio", "25", "");	
-	}
-	
-	// CREA MARCO - NOMBRE SUPERA LIMITE
-	
-	public void cCrearMarcoNombreSuperaLimite() {
-		LoginTest etiquetas = new LoginTest();
-		etiquetas.ingresarEtiq(perfil);
-		String hojaCreada2 = etiquetas.tCrearHoja();
-		etiquetas.tCrearMarcoNombreSuperaLimite(hojaCreada2, "Nombre superaaaaaaaaaaaaaaaaa limiteeeeeeeeeeeeeeeeeeeee", "25", "25");	
-	}
-	
-	// CREA MARCO - ANCHO SUPERA LIMITE
-	
-	public void cCrearMarcoAnchoSuperaLimite() {
-	LoginTest etiquetas = new LoginTest();
-	etiquetas.ingresarEtiq(perfil);
-	String hojaCreada2 = etiquetas.tCrearHoja();
-	etiquetas.tCrearMarcoAnchoSuperaLimite(hojaCreada2, "Ancho supera limite", "2555555555555555", "5");	
-	}
-	
-	// CREA MARCO - ALTO SUPERA LIMITE
-	
-	public void cCrearMarcoAltoSuperaLimite() {
-	LoginTest etiquetas = new LoginTest();
-	etiquetas.ingresarEtiq(perfil);
-	String hojaCreada2 = etiquetas.tCrearHoja();
-	etiquetas.tCrearMarcoAltoSuperaLimite(hojaCreada2, "Alto supera limite", "2", "22222222222222222222222225");	
-	}
-	
-	// CREA MARCO - CREA Y CANCELA
-	
-	public void cCrearMarcoYCancela() {
-	LoginTest etiquetas = new LoginTest();
-	etiquetas.ingresarEtiq(perfil);
-	String hojaCreada2 = etiquetas.tCrearHoja();
-	etiquetas.tCrearMarcoCreaYCancela(hojaCreada2, "Crea y Cancela", "25", "25");	
-	}
-	
-	// CREAR MARCO - ALTO CON LETRAS
-	
-	public void cCrearMarcoAltoConLetras() {
-	LoginTest etiquetas = new LoginTest();
-	etiquetas.ingresarEtiq(perfil);
-	String hojaCreada2 = etiquetas.tCrearHoja();
-	etiquetas.tCrearMarcoCreaAltoConLetras(hojaCreada2, "Alto con letras", "25", "Alto");	
-	}
-	
-	// CREAR MARCO - ANCHO CON LETRAS
-	
-	public void cCrearMArcoAnchoConLetras() {
-		LoginTest etiquetas = new LoginTest();
-		etiquetas.ingresarEtiq(perfil);
-		String hojaCreada2 = etiquetas.tCrearHoja();
-		etiquetas.tCrearMarcoCreaAnchoConLeteas(hojaCreada2, "Ancho con letras", "Ancho", "25");	
 	}
 	
 
