@@ -200,11 +200,80 @@ public class LoginTest extends BaseTest {
 	
 //-------------------------------------------------------------- CASOS NEGATIVOS MARCOS -----------------------------------------------------
 	
+	
+	// CREA MARCO - VACIO
 	public void tCrearMarcoVacio(String hojaCreada2, String nombre, String ancho, String alto) {
-		Marcos marcos = new Marcos(driver, driverWait);
-		marcos.ingresarAMarco();
-		marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
 	}
+		
+	// CREA MARCO - NOMBRE VACIO
+	public void tCrearMarcoNombreVacio(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+		
+	// CREA MARCO - ANCHO VACIO
+	public void tCrearMarcoAnchoVacio(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - ALTO VACIO
+	public void tCrearMarcoAltoVacio(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+		
+	// CREA MARCO - NOMBRE SUPERA LIMITE
+	public void tCrearMarcoNombreSuperaLimite(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - ANCHO SUPERA LIMITE
+	public void tCrearMarcoAnchoeSuperaLimite(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+
+	
+	// CREA MARCO - ALTO SUPERA LIMITE
+	public void tCrearMarcoAltoSuperaLimite(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - CANCELA
+	public void tCrearMarcoYCancela(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - ALTO INGRESA LETRAS
+	public void tCrearMarcoAltoIngresaLetras(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	// CREA MARCO - ANCHO INGRESA LETRAS
+	public void tCrearMarcoAnchoIngresaLetras(String hojaCreada2, String nombre, String ancho, String alto) {
+	Marcos marcos = new Marcos(driver, driverWait);
+	marcos.ingresarAMarco();
+	marcos.CasosNegativosMarcos(hojaCreada2,nombre,ancho,alto);
+	}
+	
+	
+	
 	
 //================================================================= TEMPLATE ================================================================		
 	
